@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>LearnJS</title>
+	<script src="debug.js"></script>
+	<script src="hide.js"></script>
+	<link rel="stylesheet" type="text/css" href="demo.css">
+</head>
+<body>
+	<button onclick="hide(this,true); debug('hide button 1');">
+		hide1
+	</button>
+	<button onclick="hide(this); debug('hide button 2');">
+		hide2
+	</button>
+	<p class="hilite">Hello World</p>
+	<img src='123.png'/>
+	<img src='123.png'/>
+	<img src='123.png'/>
+	
+</body>
+	<script type="text/javascript">
+		window.onload = function(){
+			var images = document.getElementsByTagName('img');
+			for (var i = 0; i < images.length; i++) {
+				var image=images[i];
+				if (image.addEventListener) {//注册事件处理程序的另一种方法
+					image.addEventListener("click",hide,false);
+				}else{//兼容IE8及以前版本
+					image.attachEvent("onclick",hide);
+				}
+			}
+			function hide(event){event.target.style.visibility="hidden";}
+		}
+	</script>
+</html>
